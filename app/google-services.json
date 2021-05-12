@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "828182566629",
+    "project_id": "bruno-lipovac-rma",
+    "storage_bucket": "bruno-lipovac-rma.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:828182566629:android:012fe9341a2a52cd9e260c",
+        "android_client_info": {
+          "package_name": "com.example.bruno_lipovac_rma"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "828182566629-q4v7rlouoq42djmialn446igrci2qf6r.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDCZo7jviSxdtA29AfpLC4tXqKbM4Yzkho"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "828182566629-q4v7rlouoq42djmialn446igrci2qf6r.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

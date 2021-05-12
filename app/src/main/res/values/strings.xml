@@ -1,0 +1,6 @@
+<resources>
+    <string name="app_name">bruno-lipovac-rma</string>
+    <string name="password">password</string>
+    <string name="contained_button">Contained button</string>
+    <string name="email">email</string>
+</resources>
