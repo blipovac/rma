@@ -1,5 +1,6 @@
 package com.example.bruno_lipovac_rma
 
+import android.content.Intent
 import android.os.Bundle
 import android.util.Log
 import androidx.appcompat.app.AppCompatActivity
@@ -36,6 +37,15 @@ class MainActivity : AppCompatActivity() {
         binding.loginButton.setOnClickListener {
             loginUser()
         }
+
+        binding.registerButton.setOnClickListener {
+            goToRegister()
+        }
+    }
+
+    private fun goToRegister() {
+        val intent = Intent(this, RegisterActivity::class.java)
+        startActivity(intent)
     }
 
     private fun loginUser() {
