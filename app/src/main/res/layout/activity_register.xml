@@ -17,6 +17,7 @@
             android:layout_height="wrap_content"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
+            app:errorEnabled="true"
             android:hint="@string/email">
 
             <com.google.android.material.textfield.TextInputEditText
@@ -32,6 +33,7 @@
             android:layout_height="wrap_content"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/email"
+            app:errorEnabled="true"
             android:hint="@string/password">
 
             <com.google.android.material.textfield.TextInputEditText
@@ -47,6 +49,7 @@
             android:layout_height="wrap_content"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/password"
+            app:errorEnabled="true"
             android:hint="@string/confirm_password">
 
             <com.google.android.material.textfield.TextInputEditText
@@ -64,12 +67,12 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/password_confirm">
             <RadioButton
-                android:id="@+id/radio_button_1"
+                android:id="@+id/package_sender_button"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:text="@string/package_sender"/>
             <RadioButton
-                android:id="@+id/radio_button_2"
+                android:id="@+id/package_courier_button"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:text="@string/package_courier"/>
