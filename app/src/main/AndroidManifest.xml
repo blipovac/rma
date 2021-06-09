@@ -11,6 +11,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.Brunolipovacrma">
+        <activity android:name=".PackageCourierActivity"></activity>
+        <activity android:name=".PackageSenderActivity" />
         <activity android:name=".RegisterActivity" />
         <activity android:name=".MainActivity">
             <intent-filter>
