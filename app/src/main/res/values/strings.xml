@@ -8,4 +8,9 @@
     <string name="confirm_password">password confirmation</string>
     <string name="package_sender">Package Sender</string>
     <string name="package_courier">Package Courier</string>
+    <string name="pickup_address">Package Pickup Address</string>
+    <string name="delivery_address">Package Delivery Address</string>
+    <string name="delivery_note">Additional Delivery Note</string>
+    <string name="delivery_notes">Delivery Notes:</string>
+    <string name="post_delivery">Post Delivery</string>
 </resources>

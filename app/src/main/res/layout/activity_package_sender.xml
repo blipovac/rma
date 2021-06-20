@@ -6,13 +6,72 @@
     android:layout_height="match_parent"
     tools:context=".PackageSenderActivity">
 
-    <TextView
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="this is package sender activity"
-        >
-    </TextView>
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:padding="16dp">
 
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/pickup_address"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="@string/pickup_address"
+            app:errorEnabled="true"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/delivery_address"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="@string/delivery_address"
+            app:errorEnabled="true"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/pickup_address">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <TextView
+            android:id="@+id/notes_label"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/delivery_address"
+            android:text="@string/delivery_notes"
+            android:textColor="@color/black">
+        </TextView>
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/delivery_note"
+            android:layout_width="match_parent"
+            android:layout_height="300dp"
+            app:errorEnabled="true"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/notes_label">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:layout_width="match_parent"
+                android:layout_height="match_parent" />
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <Button
+            android:id="@+id/send_order_button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/delivery_note"
+            android:text="@string/post_delivery"
+            />
+    </androidx.constraintlayout.widget.ConstraintLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>
