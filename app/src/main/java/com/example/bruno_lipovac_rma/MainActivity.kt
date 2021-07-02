@@ -88,6 +88,8 @@ class MainActivity : AppCompatActivity() {
             UserType.SENDER -> {
                 val intent = Intent(this, PackageSenderActivity::class.java)
 
+                intent.putExtra("USER_UID", this.model.user.value?.uid)
+
                 startActivity(intent)
             }
             else -> {
