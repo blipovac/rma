@@ -28,6 +28,10 @@ class PackageSenderActivity : AppCompatActivity() {
             postDelivery()
         }
 
+        binding.pickupAddress.setOnClickListener {
+            
+        }
+
         val extra = intent.extras
 
         userUid = extra?.getString("USER_UID").toString()
