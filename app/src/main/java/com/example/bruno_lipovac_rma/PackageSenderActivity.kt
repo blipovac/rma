@@ -1,9 +1,9 @@
 package com.example.bruno_lipovac_rma
 
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
 import android.widget.Toast
+import androidx.appcompat.app.AppCompatActivity
 import com.example.bruno_lipovac_rma.databinding.ActivityPackageSenderBinding
 import com.example.bruno_lipovac_rma.models.Delivery
 import com.google.firebase.firestore.FirebaseFirestore
@@ -29,12 +29,16 @@ class PackageSenderActivity : AppCompatActivity() {
         }
 
         binding.pickupAddress.setOnClickListener {
-            
+            openMap()
         }
 
         val extra = intent.extras
 
         userUid = extra?.getString("USER_UID").toString()
+    }
+
+    private fun openMap() {
+
     }
 
     private fun postDelivery() {
