@@ -6,78 +6,89 @@
     android:layout_height="match_parent"
     tools:context=".PackageSenderActivity">
 
-    <androidx.constraintlayout.widget.ConstraintLayout
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/pickup_address"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:hint="@string/pickup_address"
+        app:errorEnabled="true"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:clickable="true"
+            android:focusable="true" />
+
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <Button
+        android:id="@+id/show_map_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/show_map_text"
+        app:layout_constraintStart_toEndOf="@id/pickup_address"
+        app:layout_constraintTop_toTopOf="@id/pickup_address"
+        android:stateListAnimator="@null"/>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/delivery_address"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="@string/delivery_address"
+        app:errorEnabled="true"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/pickup_address">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <TextView
+        android:id="@+id/notes_label"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/delivery_notes"
+        android:textColor="@color/black"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/delivery_address"></TextView>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/delivery_note"
+        android:layout_width="match_parent"
+        android:layout_height="300dp"
+        app:errorEnabled="true"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/notes_label">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
+
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <Button
+        android:id="@+id/send_order_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/post_delivery"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/delivery_note"
+        android:stateListAnimator="@null"/>
+
+    <FrameLayout
+        android:id="@+id/map_layout"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:padding="16dp">
 
-<!--        <fragment-->
-<!--            class="com.google.android.gms.maps.SupportMapFragment"-->
-<!--            android:id="@+id/map_fragment"-->
-<!--            android:layout_width="match_parent"-->
-<!--            android:layout_height="match_parent" />-->
-
-        <com.google.android.material.textfield.TextInputLayout
-            android:id="@+id/pickup_address"
+        <androidx.fragment.app.FragmentContainerView
+            android:id="@+id/map_fragment"
+            class="com.google.android.gms.maps.SupportMapFragment"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:hint="@string/pickup_address"
-            app:errorEnabled="true"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent">
-
-            <com.google.android.material.textfield.TextInputEditText
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content" />
-
-        </com.google.android.material.textfield.TextInputLayout>
-
-        <com.google.android.material.textfield.TextInputLayout
-            android:id="@+id/delivery_address"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:hint="@string/delivery_address"
-            app:errorEnabled="true"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/pickup_address">
-
-            <com.google.android.material.textfield.TextInputEditText
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content" />
-
-        </com.google.android.material.textfield.TextInputLayout>
-
-        <TextView
-            android:id="@+id/notes_label"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/delivery_address"
-            android:text="@string/delivery_notes"
-            android:textColor="@color/black">
-        </TextView>
-
-        <com.google.android.material.textfield.TextInputLayout
-            android:id="@+id/delivery_note"
-            android:layout_width="match_parent"
-            android:layout_height="300dp"
-            app:errorEnabled="true"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/notes_label">
-
-            <com.google.android.material.textfield.TextInputEditText
-                android:layout_width="match_parent"
-                android:layout_height="match_parent" />
-
-        </com.google.android.material.textfield.TextInputLayout>
-
-        <Button
-            android:id="@+id/send_order_button"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/delivery_note"
-            android:text="@string/post_delivery"
-            />
-    </androidx.constraintlayout.widget.ConstraintLayout>
+            android:layout_height="match_parent" />
+    </FrameLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>

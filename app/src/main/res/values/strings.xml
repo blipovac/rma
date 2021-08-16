@@ -13,4 +13,5 @@
     <string name="delivery_note">Additional Delivery Note</string>
     <string name="delivery_notes">Delivery Notes:</string>
     <string name="post_delivery">Post Delivery</string>
+    <string name="show_map_text" />
 </resources>
