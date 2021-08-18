@@ -75,6 +75,8 @@ dependencies {
     // Jetpack Compose Integration for ViewModel
     implementation "androidx.lifecycle:lifecycle-viewmodel-compose:1.0.0-alpha07"
 
+    implementation 'com.google.android.libraries.places:places:2.4.0'
+
     // Annotation processor
 //    kapt "androidx.lifecycle:lifecycle-compiler:$lifecycle_version"
     // alternately - if using Java8, use the following instead of lifecycle-compiler
