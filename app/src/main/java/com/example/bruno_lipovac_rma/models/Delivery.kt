@@ -4,7 +4,7 @@ import com.google.android.gms.maps.model.LatLng
 
 data class Delivery(
     val pickupAddress: String,
-    val deliverAddress: String,
+    val deliveryAddress: String,
     val notes: String,
     val isComplete: Boolean,
     val deliveryPin: String,
