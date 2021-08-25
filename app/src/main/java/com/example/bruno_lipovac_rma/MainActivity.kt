@@ -103,7 +103,9 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun getUser(uid: String?) {
-        db.collection("users").whereEqualTo("uid", uid).get()
+        db.collection("users")
+            .whereEqualTo("uid", uid)
+            .get()
             .addOnCompleteListener(this) { task ->
                 if (task.isSuccessful) {
                     Log.d("TASK", task.result.toString())

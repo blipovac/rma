@@ -50,7 +50,7 @@ class RegisterActivity : AppCompatActivity() {
                         val user = User(
                             document.data["email"].toString(),
                             document.data["password"].toString(),
-                            document.data["userType"] as UserType,
+                            UserType.valueOf(document.data["userType"].toString()),
                             document.data["uid"].toString()
 
                         )
