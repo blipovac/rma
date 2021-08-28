@@ -49,8 +49,11 @@ class PackageCourierActivity : AppCompatActivity() {
                     val deliveries: MutableList<Delivery> = mutableListOf<Delivery>()
 
                     for (document in task.result) {
-                        val deliveryGeoHashMap: Map<String, Any> = document.data["deliveryLatLng"] as Map<String, Any>
-                        val pickupGeoHashMap : Map<String, Any> = document.data["pickupLng"] as Map<String, Any>
+                        val deliveryGeoHashMap: Map<String, Any> =
+                            document.data["deliveryLatLng"] as Map<String, Any>
+
+                        val pickupGeoHashMap : Map<String, Any> =
+                            document.data["pickupLatLng"] as Map<String, Any>
 
                         val deliveryLatLng = LatLng(
                             deliveryGeoHashMap["latitude"] as Double,
