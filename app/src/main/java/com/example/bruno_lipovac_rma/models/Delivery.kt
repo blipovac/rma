@@ -10,5 +10,5 @@ data class Delivery(
     val deliveryPin: String,
     val userUid: String,
     val deliveryLatLng: LatLng?,
-    val pickupLng: LatLng?,
+    val pickupLatLng: LatLng?,
 )
