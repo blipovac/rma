@@ -103,7 +103,14 @@ class DeliveryDetailActivity : AppCompatActivity(), OnMapReadyCallback {
                         Color.RED
                     }
 
+                    val icon: Int = if (canAcceptDelivery) {
+                        R.drawable.ic_baseline_done_24
+                    } else {
+                        R.drawable.ic_baseline_close_24
+                    }
+
                     binding.orderActionButton.backgroundTintList = ColorStateList.valueOf(color)
+                    binding.orderActionButton.setImageResource(icon)
                 }
         }
     }

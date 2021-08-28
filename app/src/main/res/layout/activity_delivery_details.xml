@@ -69,5 +69,6 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
+        app:srcCompat="@drawable/ic_baseline_done_24"
         app:layout_constraintTop_toBottomOf="@id/delivery_note" />
 </androidx.constraintlayout.widget.ConstraintLayout>
