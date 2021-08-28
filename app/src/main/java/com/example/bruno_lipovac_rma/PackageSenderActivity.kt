@@ -116,7 +116,9 @@ class PackageSenderActivity : AppCompatActivity(), OnMapReadyCallback {
             deliveryPin,
             userUid,
             pickupLatLng,
-            deliveryLatLng
+            deliveryLatLng,
+            null,
+            null
         )
 
         db.collection("deliveries")

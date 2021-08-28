@@ -65,6 +65,12 @@ class PackageCourierActivity : AppCompatActivity() {
                             pickupGeoHashMap["longitude"] as Double
                         )
 
+                        val courierId = if (document.data["courierId"] == null) {
+                            null
+                        } else {
+                            document.data["courierId"].toString()
+                        }
+
                         deliveries.add(
                             Delivery(
                                 document.data["pickupAddress"].toString(),
@@ -74,7 +80,9 @@ class PackageCourierActivity : AppCompatActivity() {
                                 document.data["deliveryPin"].toString(),
                                 document.data["userUid"].toString(),
                                 pickupLatLng,
-                                deliveryLatLng
+                                deliveryLatLng,
+                                document.id,
+                                courierId
                             )
                         )
                     }
@@ -88,13 +96,16 @@ class PackageCourierActivity : AppCompatActivity() {
 
     private fun adapterOnClick(delivery: Delivery) {
         val intent = Intent(this, DeliveryDetailActivity()::class.java)
+
         intent.putExtra("PICKUP_ADDRESS", delivery.pickupAddress).toString()
         intent.putExtra("DELIVERY_ADDRESS", delivery.deliverAddress).toString()
         intent.putExtra("NOTES", delivery.notes).toString()
-        intent.putExtra("PICKUP_LAT", delivery.pickupLatLng?.latitude.toString())
-        intent.putExtra("PICKUP_LNG", delivery.pickupLatLng?.longitude.toString())
-        intent.putExtra("DELIVERY_LAT", delivery.deliveryLatLng?.latitude.toString())
-        intent.putExtra("DELIVERY_LNG", delivery.deliveryLatLng?.longitude.toString())
+        intent.putExtra("PICKUP_LAT", delivery.pickupLatLng?.latitude)
+        intent.putExtra("PICKUP_LNG", delivery.pickupLatLng?.longitude)
+        intent.putExtra("DELIVERY_LAT", delivery.deliveryLatLng?.latitude)
+        intent.putExtra("DELIVERY_LNG", delivery.deliveryLatLng?.longitude)
+        intent.putExtra("DOCUMENT_ID", delivery.documentId)
+        intent.putExtra("COURIER_ID", delivery.courierId)
 
         startActivity(intent)
     }
