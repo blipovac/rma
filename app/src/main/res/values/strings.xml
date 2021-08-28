@@ -15,4 +15,5 @@
     <string name="post_delivery">Post Delivery</string>
     <string name="show_map_text" />
     <string name="available_deliveries">Available Deliveries:</string>
+    <string name="fab_content_desc">Button to accept or reject a delivery</string>
 </resources>
