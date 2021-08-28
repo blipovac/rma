@@ -10,9 +10,10 @@
         android:id="@+id/delivery_list_title"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Available Deliveries:"
+        android:text="@string/available_deliveries"
         android:textSize="20sp"
         android:textStyle="bold"
+        android:padding="10dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
