@@ -22,4 +22,5 @@
     <string name="enter_package_pickup_address">Enter package pickup address:</string>
     <string name="enter_package_delivery_address">Enter package delivery address:</string>
     <string name="enter_your_user_information">Enter your user information:</string>
+    <string name="sign_out">Sign Out</string>
 </resources>

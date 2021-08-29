@@ -19,6 +19,20 @@
         app:layout_constraintBottom_toTopOf="@id/pickup_address" />
 
     <TextView
+        android:id="@+id/sign_out"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/sign_out"
+        android:background="@color/fui_transparent"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        android:textColor="@color/black"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        />
+
+
+    <TextView
         android:id="@+id/search_pickup_address_label"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
