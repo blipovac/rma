@@ -3,6 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
+    android:paddingBottom="15dp"
     android:layout_height="match_parent">
 
     <TextView
@@ -103,5 +104,5 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@id/order_action_button"
         app:layout_constraintTop_toBottomOf="@id/delivery_note"
-        app:srcCompat="@drawable/ic_baseline_done_24"/>
+        app:srcCompat="@drawable/ic_baseline_receipt_long_24"/>
 </androidx.constraintlayout.widget.ConstraintLayout>
