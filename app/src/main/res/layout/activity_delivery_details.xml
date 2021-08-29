@@ -3,7 +3,6 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:padding="10dp"
     android:layout_height="match_parent">
 
     <TextView
@@ -16,7 +15,7 @@
         android:background="@color/purple_700"
         android:textColor="@color/black"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
+
         app:layout_constraintBottom_toTopOf="@id/map" />
 
     <androidx.fragment.app.FragmentContainerView
@@ -87,12 +86,22 @@
         android:id="@+id/order_action_button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_gravity="bottom|center"
-        app:backgroundTint="@color/green"
         android:contentDescription="@string/fab_content_desc"
+        app:backgroundTint="@color/green"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintEnd_toStartOf="@id/complete_delivery_button"
         app:layout_constraintStart_toStartOf="parent"
         app:srcCompat="@drawable/ic_baseline_done_24"
         app:layout_constraintTop_toBottomOf="@id/delivery_note" />
+
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/complete_delivery_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:contentDescription="@string/fab_content_desc"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@id/order_action_button"
+        app:layout_constraintTop_toBottomOf="@id/delivery_note"
+        app:srcCompat="@drawable/ic_baseline_done_24"/>
 </androidx.constraintlayout.widget.ConstraintLayout>
