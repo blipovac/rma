@@ -19,7 +19,7 @@ import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FirebaseFirestore
 import kotlin.random.Random
 
-class PackageSenderActivity : AppCompatActivity(), OnMapReadyCallback {
+class PackageSenderActivity : AppCompatActivity() {
 
     private lateinit var googleMap: GoogleMap
     lateinit var binding: ActivityPackageSenderBinding
@@ -81,7 +81,10 @@ class PackageSenderActivity : AppCompatActivity(), OnMapReadyCallback {
 
         mSearchPickupFragment.setOnPlaceSelectedListener(object : PlaceSelectionListener {
             override fun onPlaceSelected(place: Place) {
-                Log.i("PLACE API STUFF", "Place: ${place.name}, ${place.id}, ${place.latLng}, ${place.address}")
+                Log.i(
+                    "PLACE API STUFF",
+                    "Place: ${place.name}, ${place.id}, ${place.latLng}, ${place.address}"
+                )
                 pickupAddress = "${place.name}, ${place.address}"
                 pickupLatLng = place.latLng
             }
@@ -105,7 +108,10 @@ class PackageSenderActivity : AppCompatActivity(), OnMapReadyCallback {
 
         mSearchDeliveryFragment.setOnPlaceSelectedListener(object : PlaceSelectionListener {
             override fun onPlaceSelected(place: Place) {
-                Log.i("PLACE API STUFF", "Place: ${place.name}, ${place.id}, ${place.latLng}, ${place.address}")
+                Log.i(
+                    "PLACE API STUFF",
+                    "Place: ${place.name}, ${place.id}, ${place.latLng}, ${place.address}"
+                )
                 deliveryAddress = "${place.name}, ${place.address}"
                 deliveryLatLng = place.latLng
             }
@@ -138,12 +144,22 @@ class PackageSenderActivity : AppCompatActivity(), OnMapReadyCallback {
             .add(delivery)
             .addOnCompleteListener { task ->
                 if (task.isSuccessful) {
-                    Toast.makeText(
-                        baseContext,
-                        "Delivery successfully posted. Delivery pin: $deliveryPin",
-                        Toast.LENGTH_SHORT
-                    )
-                        .show()
+                    val sendIntent = Intent().apply {
+                        action = Intent.ACTION_SEND
+                        putExtra(
+                            Intent.EXTRA_TEXT,
+                            "Hello there, I am sending you a package when the courier arrives" +
+                                    " please confirm the delivery with this pin $deliveryPin."
+                        )
+                        type = "text/plain"
+                    }
+
+                    val shareIntent =  Intent.createChooser(sendIntent, null)
+                    startActivity(shareIntent)
+
+                    mSearchDeliveryFragment.setText("")
+                    mSearchPickupFragment.setText("")
+                    binding.deliveryNote.editText?.setText("")
                 } else {
                     Log.d("POST_DELIVERY", "delivery post failed")
 
@@ -151,10 +167,5 @@ class PackageSenderActivity : AppCompatActivity(), OnMapReadyCallback {
                         .show()
                 }
             }
-    }
-
-    override fun onMapReady(p0: GoogleMap) {
-        Log.d("MAP READY", "MAP READY")
-        googleMap = p0
     }
 }
