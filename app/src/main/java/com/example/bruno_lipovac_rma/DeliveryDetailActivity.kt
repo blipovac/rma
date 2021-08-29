@@ -1,5 +1,6 @@
 package com.example.bruno_lipovac_rma
 
+import android.content.Intent
 import android.content.res.ColorStateList
 import android.graphics.Color
 import android.os.Bundle
@@ -140,7 +141,8 @@ class DeliveryDetailActivity : AppCompatActivity(), OnMapReadyCallback {
     }
 
     private fun goToDeliveryListScreen() {
-        TODO("Not yet implemented")
+        val intent = Intent(this, PackageCourierActivity()::class.java)
+        startActivity(intent)
     }
 
     private fun deliveryAction() {
