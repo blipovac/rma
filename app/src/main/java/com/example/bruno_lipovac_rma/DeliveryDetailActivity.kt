@@ -48,6 +48,13 @@ class DeliveryDetailActivity : AppCompatActivity(), OnMapReadyCallback {
 
         binding = ActivityDeliveryDetailsBinding.inflate(layoutInflater)
 
+        binding.signOut.setOnClickListener {
+            auth.signOut()
+
+            val intent = Intent(this, MainActivity()::class.java)
+            startActivity(intent)
+        }
+
         setContentView(binding.root)
 
         binding.orderActionButton.setOnClickListener {

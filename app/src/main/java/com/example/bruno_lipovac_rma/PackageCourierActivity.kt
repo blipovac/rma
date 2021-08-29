@@ -8,21 +8,39 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.example.bruno_lipovac_rma.databinding.ActivityPackageCourierBinding
 import com.example.bruno_lipovac_rma.models.Delivery
 import com.example.bruno_lipovac_rma.models.PackageCourierViewModel
 import com.google.android.gms.maps.model.LatLng
+import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FirebaseFirestore
 
 class PackageCourierActivity : AppCompatActivity() {
     lateinit var db: FirebaseFirestore
+
     private val model: PackageCourierViewModel by viewModels()
 
+    private lateinit var binding: ActivityPackageCourierBinding
+
     private lateinit var deliveryListAdapter: DeliveryListAdapter
+
+    private lateinit var auth: FirebaseAuth
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-        setContentView(R.layout.activity_package_courier)
+        binding = ActivityPackageCourierBinding.inflate(layoutInflater)
+
+        auth = FirebaseAuth.getInstance()
+
+        setContentView(binding.root)
+
+        binding.signOut.setOnClickListener {
+            auth.signOut()
+
+            val intent = Intent(this, MainActivity()::class.java)
+            startActivity(intent)
+        }
 
         db = FirebaseFirestore.getInstance()
 
@@ -40,7 +58,7 @@ class PackageCourierActivity : AppCompatActivity() {
         model.deliveries.observe(this, deliveriesObserver)
 
         db.collection("deliveries")
-            .whereEqualTo("isComplete", false)
+            .whereEqualTo("complete", false)
             .get()
             .addOnFailureListener { exception ->
                 Log.d("USER_FETCH", "user fetch failed: ", exception)
@@ -53,7 +71,7 @@ class PackageCourierActivity : AppCompatActivity() {
                         val deliveryGeoHashMap: Map<String, Any> =
                             document.data["deliveryLatLng"] as Map<String, Any>
 
-                        val pickupGeoHashMap : Map<String, Any> =
+                        val pickupGeoHashMap: Map<String, Any> =
                             document.data["pickupLatLng"] as Map<String, Any>
 
                         val deliveryLatLng = LatLng(

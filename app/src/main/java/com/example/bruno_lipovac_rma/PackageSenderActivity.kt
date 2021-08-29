@@ -1,5 +1,6 @@
 package com.example.bruno_lipovac_rma
 
+import android.content.Intent
 import android.os.Bundle
 import android.util.Log
 import android.widget.Toast
@@ -14,6 +15,7 @@ import com.google.android.libraries.places.api.Places
 import com.google.android.libraries.places.api.model.Place
 import com.google.android.libraries.places.widget.AutocompleteSupportFragment
 import com.google.android.libraries.places.widget.listener.PlaceSelectionListener
+import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FirebaseFirestore
 import kotlin.random.Random
 
@@ -33,10 +35,21 @@ class PackageSenderActivity : AppCompatActivity(), OnMapReadyCallback {
     private var pickupLatLng: LatLng? = null
     private var deliveryLatLng: LatLng? = null
 
+    private lateinit var auth: FirebaseAuth
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
         binding = ActivityPackageSenderBinding.inflate(layoutInflater)
+
+        auth = FirebaseAuth.getInstance()
+
+        binding.signOut.setOnClickListener {
+            auth.signOut()
+
+            val intent = Intent(this, MainActivity()::class.java)
+            startActivity(intent)
+        }
 
         db = FirebaseFirestore.getInstance()
 
