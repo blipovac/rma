@@ -10,6 +10,7 @@ import android.widget.EditText
 import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
+import androidx.appcompat.content.res.AppCompatResources
 import com.example.bruno_lipovac_rma.databinding.ActivityDeliveryDetailsBinding
 import com.google.android.gms.maps.*
 import com.google.android.gms.maps.model.LatLng
@@ -78,9 +79,11 @@ class DeliveryDetailActivity : AppCompatActivity(), OnMapReadyCallback {
         if (courierId == null) {
             canAcceptDelivery = true
             binding.orderActionButton.backgroundTintList = ColorStateList.valueOf(Color.GREEN)
+            binding.orderActionButton.setImageDrawable(AppCompatResources.getDrawable(this, R.drawable.ic_baseline_done_24))
         } else {
             this.canAcceptDelivery = false
             binding.orderActionButton.backgroundTintList = ColorStateList.valueOf(Color.RED)
+            binding.orderActionButton.setImageDrawable(AppCompatResources.getDrawable(this, R.drawable.ic_baseline_close_24))
         }
 
         binding.pickupAddress.text = pickupAddress
