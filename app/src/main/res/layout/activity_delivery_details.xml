@@ -31,6 +31,14 @@
         tools:context="com.example.bruno_lipovac_rma.DeliveryDetailActivity" />
 
     <TextView
+        android:id="@+id/pickup_address_label"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/pickup_address"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/map" />
+
+    <TextView
         android:id="@+id/pickup_address"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -38,7 +46,15 @@
         android:textSize="20sp"
         android:textStyle="bold"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/map" />
+        app:layout_constraintTop_toBottomOf="@id/pickup_address_label" />
+
+    <TextView
+        android:id="@+id/delivery_address_label"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/delivery_address"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/pickup_address" />
 
     <TextView
         android:id="@+id/delivery_address"
@@ -48,17 +64,24 @@
         android:textSize="20sp"
         android:textStyle="bold"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/pickup_address" />
+        app:layout_constraintTop_toBottomOf="@id/delivery_address_label" />
+
+    <TextView
+        android:id="@+id/delivery_notes_label"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/delivery_note"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/delivery_address" />
 
     <TextView
         android:id="@+id/delivery_note"
         android:layout_width="match_parent"
         android:layout_height="150dp"
         android:padding="10dp"
-        android:textSize="20sp"
         android:textStyle="bold"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/delivery_address" />
+        app:layout_constraintTop_toBottomOf="@id/delivery_notes_label" />
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:id="@+id/order_action_button"
