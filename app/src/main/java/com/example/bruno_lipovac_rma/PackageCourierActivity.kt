@@ -40,6 +40,7 @@ class PackageCourierActivity : AppCompatActivity() {
         model.deliveries.observe(this, deliveriesObserver)
 
         db.collection("deliveries")
+            .whereEqualTo("isComplete", false)
             .get()
             .addOnFailureListener { exception ->
                 Log.d("USER_FETCH", "user fetch failed: ", exception)
