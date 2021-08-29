@@ -32,6 +32,8 @@ class MainActivity : AppCompatActivity() {
 
         auth = FirebaseAuth.getInstance()
 
+        val authUser = auth.currentUser
+
         setContentView(binding.root)
 
         val authUserObserver = Observer<FirebaseUser> { authUser ->
@@ -52,6 +54,10 @@ class MainActivity : AppCompatActivity() {
 
         binding.registerButton.setOnClickListener {
             goToRegister()
+        }
+
+        if (authUser != null) {
+            getUser(authUser.uid)
         }
     }
 
