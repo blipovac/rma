@@ -3,7 +3,11 @@ package com.example.bruno_lipovac_rma
 import android.content.res.ColorStateList
 import android.graphics.Color
 import android.os.Bundle
+import android.text.InputType
 import android.util.Log
+import android.widget.EditText
+import android.widget.Toast
+import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import com.example.bruno_lipovac_rma.databinding.ActivityDeliveryDetailsBinding
 import com.google.android.gms.maps.*
@@ -24,6 +28,7 @@ class DeliveryDetailActivity : AppCompatActivity(), OnMapReadyCallback {
     private var deliveryLng: Double? = null
     private var documentId: String? = null
     private var courierId: String? = null
+    private var deliveryPin: String? = null
 
     private var canAcceptDelivery: Boolean = true
 
@@ -47,6 +52,15 @@ class DeliveryDetailActivity : AppCompatActivity(), OnMapReadyCallback {
             deliveryAction()
         }
 
+        binding.completeDeliveryButton.setOnClickListener {
+            if (canAcceptDelivery) {
+                Toast.makeText(this, "You have not accepted this delivery!", Toast.LENGTH_SHORT)
+                    .show()
+            } else {
+                completeDelivery()
+            }
+        }
+
         val extra = intent.extras
 
         pickupAddress = extra?.getString("PICKUP_ADDRESS")
@@ -58,6 +72,7 @@ class DeliveryDetailActivity : AppCompatActivity(), OnMapReadyCallback {
         deliveryLng = extra?.getDouble("DELIVERY_LNG")
         documentId = extra?.getString("DOCUMENT_ID")
         courierId = extra?.getString("COURIER_ID")
+        deliveryPin = extra?.getString("DELIVERY_PIN")
 
         if (courierId == null) {
             canAcceptDelivery = true
@@ -73,6 +88,59 @@ class DeliveryDetailActivity : AppCompatActivity(), OnMapReadyCallback {
 
         val mapFragment = supportFragmentManager.findFragmentById(R.id.map) as? SupportMapFragment
         mapFragment?.getMapAsync(this)
+    }
+
+    private fun completeDelivery() {
+        val dialogBuilder: AlertDialog.Builder = AlertDialog.Builder(this)
+
+        val textInput = EditText(this)
+        textInput.inputType = InputType.TYPE_CLASS_TEXT
+
+        dialogBuilder.setTitle("Complete delivery:")
+            .setMessage("Please enter the pin provided by the package sender")
+            .setView(textInput)
+            .setPositiveButton("OK") { dialog, which ->
+                val enteredPin = textInput.text.toString()
+
+                checkDeliveryPin(enteredPin)
+
+                dialog.cancel()
+            }
+            .setNegativeButton("Cancel") { dialog, which ->
+                dialog.cancel()
+            }
+            .show()
+    }
+
+    private fun checkDeliveryPin(enteredPin: String) {
+        Log.d("CHECKING_DELIVERY_PIN", "Hello $enteredPin")
+
+        if (enteredPin == deliveryPin) {
+            documentId?.let {
+                db.collection("deliveries")
+                    .document(it)
+                    .update("isComplete", true)
+                    .addOnFailureListener { exception ->
+                        Log.d("UPDATING_DELIVERY", "failed", exception)
+
+                        Toast.makeText(this, "Something went wrong!", Toast.LENGTH_SHORT)
+                            .show()
+                    }
+                    .addOnCompleteListener {
+                        Toast.makeText(this, "Delivery successfully completed", Toast.LENGTH_SHORT)
+                            .show()
+                        
+                        goToDeliveryListScreen()
+                    }
+            }
+        } else {
+            Toast.makeText(this, "Invalid pin entered!", Toast.LENGTH_SHORT)
+                .show()
+        }
+    }
+
+    private fun goToDeliveryListScreen() {
+        TODO("Not yet implemented")
     }
 
     private fun deliveryAction() {
@@ -96,7 +164,7 @@ class DeliveryDetailActivity : AppCompatActivity(), OnMapReadyCallback {
                 }
                 .addOnCompleteListener(this) {
                     canAcceptDelivery = !canAcceptDelivery
-                    
+
                     val color: Int = if (canAcceptDelivery) {
                         Color.GREEN
                     } else {

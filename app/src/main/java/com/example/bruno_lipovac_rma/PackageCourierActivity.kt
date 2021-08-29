@@ -106,6 +106,7 @@ class PackageCourierActivity : AppCompatActivity() {
         intent.putExtra("DELIVERY_LNG", delivery.deliveryLatLng?.longitude)
         intent.putExtra("DOCUMENT_ID", delivery.documentId)
         intent.putExtra("COURIER_ID", delivery.courierId)
+        intent.putExtra("DELIVERY_PIN", delivery.deliveryPin)
 
         startActivity(intent)
     }
