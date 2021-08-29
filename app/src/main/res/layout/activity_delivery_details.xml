@@ -6,13 +6,25 @@
     android:padding="10dp"
     android:layout_height="match_parent">
 
+    <TextView
+        android:id="@+id/delivery_details_title"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="10dp"
+        android:text="@string/delivery_details"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toTopOf="@id/map" />
+
     <fragment
         android:id="@+id/map"
         android:name="com.google.android.gms.maps.SupportMapFragment"
         android:layout_width="match_parent"
         android:layout_height="250dp"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/delivery_details_title"
         app:layout_constraintBottom_toTopOf="@id/pickup_address"
         app:layout_constraintHeight_default="wrap"
         tools:context="com.example.bruno_lipovac_rma.DeliveryDetailActivity" />
@@ -22,7 +34,6 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:padding="10dp"
-        android:text="PLACEHOLDEEEEEEER"
         android:textSize="20sp"
         android:textStyle="bold"
         app:layout_constraintStart_toStartOf="parent"
@@ -33,7 +44,6 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:padding="10dp"
-        android:text="PLACEHOLDEEEEEEER"
         android:textSize="20sp"
         android:textStyle="bold"
         app:layout_constraintStart_toStartOf="parent"
@@ -44,7 +54,6 @@
         android:layout_width="match_parent"
         android:layout_height="150dp"
         android:padding="10dp"
-        android:text="PLACEHOLDEEEEEEER"
         android:textSize="20sp"
         android:textStyle="bold"
         app:layout_constraintStart_toStartOf="parent"
