@@ -12,9 +12,10 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="@string/available_deliveries"
+        android:background="@color/purple_700"
         android:textSize="20sp"
         android:textStyle="bold"
-        android:padding="10dp"
+        android:textColor="@color/black"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
