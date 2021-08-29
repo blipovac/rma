@@ -7,30 +7,57 @@
     android:padding="10dp"
     tools:context=".PackageSenderActivity">
 
+    <TextView
+        android:id="@+id/post_delivery_title"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="10dp"
+        android:text="@string/enter_details_of_your_delivery"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toTopOf="@id/pickup_address" />
+
+    <TextView
+        android:id="@+id/search_pickup_address_label"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/enter_package_pickup_address"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/post_delivery_title" />
+
     <androidx.fragment.app.FragmentContainerView
         android:id="@+id/pickup_address"
         android:name="com.google.android.libraries.places.widget.AutocompleteSupportFragment"
         android:layout_width="match_parent"
-        android:layout_height="50dp"
+        android:layout_height="wrap_content"
         android:background="@color/browser_actions_bg_grey"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toBottomOf="@id/search_pickup_address_label" />
+
+    <TextView
+        android:id="@+id/search_delivery_address_label"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/enter_package_delivery_address"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/pickup_address" />
 
     <androidx.fragment.app.FragmentContainerView
         android:id="@+id/delivery_address"
         android:name="com.google.android.libraries.places.widget.AutocompleteSupportFragment"
         android:layout_width="match_parent"
-        android:layout_height="50dp"
+        android:layout_height="wrap_content"
         android:background="@color/browser_actions_bg_grey"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/pickup_address" />
+        app:layout_constraintTop_toBottomOf="@id/search_delivery_address_label" />
 
     <TextView
         android:id="@+id/notes_label"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="@string/delivery_notes"
-        android:textColor="@color/black"
+        android:text="@string/delivery_note"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/delivery_address" />
 

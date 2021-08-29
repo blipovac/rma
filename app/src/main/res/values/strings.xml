@@ -18,4 +18,7 @@
     <string name="fab_content_desc">Button to accept or reject a delivery</string>
     <string name="additional_delivery_information">Additional Delivery Information</string>
     <string name="delivery_details">Delivery Details:</string>
+    <string name="enter_details_of_your_delivery">Enter details of your delivery:</string>
+    <string name="enter_package_pickup_address">Enter package pickup address:</string>
+    <string name="enter_package_delivery_address">Enter package delivery address:</string>
 </resources>
